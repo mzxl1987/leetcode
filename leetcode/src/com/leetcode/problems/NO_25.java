@@ -11,14 +11,18 @@ public class NO_25 {
 		ListNode tmp = head;
 		int size = 0;
 
+		//获取队列长度
+		//get list size
 		while (tmp != null) {
 			tmp = tmp.next;
 			size++;
 		}
 
-		if (size < k)
-			return head;
+		//如果长度不够,则直接返回
+		if (size < k) return head;
 
+		//切割数组,并转换
+		//split list, and reverse sub list
 		int position = 0;
 		ListNode pre = dom;
 		ListNode rHead = null;
@@ -31,7 +35,8 @@ public class NO_25 {
 			rHead = null;
 			rTail = null;
 			tmp = pre.next;
-
+			//翻转子队列
+			//reverse sub list
 			while (position < k) {
 
 				next = tmp.next;
