@@ -4,58 +4,59 @@ import com.leetcode.clazz.ListNode;
 
 public class NO_25 {
 
-public ListNode reverseKGroup(ListNode head, int k) {
-		
+	public ListNode reverseKGroup(ListNode head, int k) {
+
 		ListNode dom = new ListNode(0);
 		dom.next = head;
 		ListNode tmp = head;
 		int size = 0;
-		
-		while(tmp != null){
+
+		while (tmp != null) {
 			tmp = tmp.next;
-			size ++;
+			size++;
 		}
-		
-		if(size < k) return head;
-		
+
+		if (size < k)
+			return head;
+
 		int position = 0;
 		ListNode pre = dom;
 		ListNode rHead = null;
 		ListNode rTail = null;
 		ListNode next = null;
-		for(int count = 0; (count + 1) * k <= size; count++){
-			
+		for (int count = 0; (count + 1) * k <= size; count++) {
+
 			position = 0;
-			
+
 			rHead = null;
 			rTail = null;
 			tmp = pre.next;
-			
-			while(position < k){
-				
+
+			while (position < k) {
+
 				next = tmp.next;
-				
-				if(rTail == null){
+
+				if (rTail == null) {
 					rHead = tmp;
 					rTail = tmp;
-				}else{
+				} else {
 					tmp.next = rHead;
 					rHead = tmp;
 				}
-				
+
 				tmp = next;
 				position++;
 			}
-			
-			if(rHead != null){
+
+			if (rHead != null) {
 				pre.next = rHead;
 				rTail.next = tmp;
 				pre = rTail;
 			}
 		}
-		
+
 		return dom.next;
-    }
+	}
 	
 	public static void main(String[] args) {
 		
